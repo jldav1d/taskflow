@@ -25,7 +25,7 @@ export default function ProjectLabelSection({
           icon={<TagsIcon size={20} />}
           color="text-primary"
         />
-        <AddProjectLabelForm projectId={projectId} />
+        {canMutate && <AddProjectLabelForm projectId={projectId} />}
       </div>
       <div className="rounded-sm">
         {projectLabels?.length === 0 ? (
