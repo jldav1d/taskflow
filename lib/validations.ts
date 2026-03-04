@@ -2,7 +2,13 @@
 
 import { z } from 'zod';
 import { TASK_PRIORITY_VALUES } from './db/schema/enums';
-import { errorMessages, isFuture } from './utils/validation.utils';
+import {
+  errorMessages,
+  isFuture,
+  MAX_CHAR,
+  MAX_COLOR_LENGTH,
+  MIN_CHAR,
+} from './utils/validation.utils';
 
 /*
 TODO: Implementation Notes for Interns:
@@ -23,11 +29,11 @@ Example schemas needed:
 export const ProjectTeamSchema = z.object({
   teamName: z
     .string(errorMessages.invalidType('Team name', 'text'))
-    .min(MIN_CHAR, errorMessages.minChar('Team name', MIN_CHAR))
+    .min(MIN_CHAR, errorMessages.minChar('Team name'))
     .max(MAX_CHAR, errorMessages.maxChar('Team name', MAX_CHAR)),
   description: z
     .string(errorMessages.invalidType('Team description', 'text'))
-    .min(MIN_CHAR, errorMessages.minChar('Team description', MIN_CHAR))
+    .min(MIN_CHAR, errorMessages.minChar('Team description'))
     .max(MAX_CHAR, errorMessages.maxChar('Team description', MAX_CHAR))
     .optional(),
   // TODO create advance string format for hex colors
@@ -35,7 +41,7 @@ export const ProjectTeamSchema = z.object({
   projectId: z.uuidv4(errorMessages.uuid('Project ID')),
   color: z
     .string(errorMessages.invalidType('Team color', 'a string'))
-    .min(MIN_CHAR, errorMessages.minChar('Team color', MIN_CHAR))
+    .min(MIN_CHAR, errorMessages.minChar('Team color'))
     .max(MAX_COLOR_LENGTH, errorMessages.maxChar('Team color', MAX_COLOR_LENGTH))
     .refine((color) => {
       // Regex for hex colors: #000 or #000000 (with optional #)
@@ -49,7 +55,7 @@ export const ProjecDiscussionSchema = z.object({
   projectId: z.uuidv4(errorMessages.uuid('Project ID')),
   title: z
     .string(errorMessages.invalidType('Project discussion title', 'text'))
-    .min(MIN_CHAR, errorMessages.minChar('Project discussion title', MIN_CHAR))
+    .min(MIN_CHAR, errorMessages.minChar('Project discussion title'))
     .max(MAX_CHAR, errorMessages.maxChar('Project discussion title', MAX_CHAR)),
   content: z.string(errorMessages.invalidType('Project discussion content', 'text')),
   closedAt: z.iso.datetime(errorMessages.invalidDate('Project discussion closed at date')),
