@@ -20,7 +20,8 @@
     "db:migrate": "drizzle-kit migrate",
     "db:pull": "drizzle-kit pull",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio --port 5252"
+    "db:studio": "drizzle-kit studio --port 5252",
+    "seed:roles": "tsx seed-role-permissions.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.25.4",
@@ -48,7 +49,7 @@
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "dotenv": "^17.2.0",
-    "drizzle-orm": "^0.44.3",
+    "drizzle-orm": "^0.45.1",
     "drizzle-seed": "^0.3.1",
     "lodash": "^4.17.21",
     "lucide-react": "^0.454.0",
@@ -79,7 +80,7 @@
     "@types/react-big-calendar": "^1.16.2",
     "@types/react-dom": "19.1.6",
     "autoprefixer": "^10.0.1",
-    "drizzle-kit": "^0.31.4",
+    "drizzle-kit": "^0.31.9",
     "eslint": "^9.31.0",
     "eslint-config-next": "^15.4.2",
     "eslint-config-prettier": "^10.1.8",
